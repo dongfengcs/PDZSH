@@ -1,4 +1,4 @@
-function evaluation_info=evaluate_PDZSH(XKTrain,LTrain,XKTest,LTest,XKRetr,LRetr,param)
+function evaluation_info=PDZSH(XKTrain,LTrain,XKTest,LTest,XKRetr,LRetr,param)
     %% parameters setting
     if strcmp(param.db_name,"APY") 
         if param.nbits < 64
@@ -46,7 +46,7 @@ function evaluation_info=evaluate_PDZSH(XKTrain,LTrain,XKTest,LTest,XKRetr,LRetr
     BRetr = compactbit(sign(XKRetr*XP)>0);
     BTest = compactbit(sign(XKTest*XP)>0);
     DHamm = hammingDist(BTest, BRetr);
-    
+    % domain-aware
     Bm = zeros(param.c,param.nbits);
     for ci = 1:param.c
         Bm(ci,:)  = sign(mean(BTrain(LTrain_s(:,ci)==1,:),1));

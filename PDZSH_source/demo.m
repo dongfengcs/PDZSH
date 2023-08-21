@@ -40,7 +40,7 @@ XAnchors = XTrain(anchor_idx,:);
 for ii = 1:length(loopnbits)
     param.nbits = loopnbits(ii);
     fprintf("======%s: start %d bits encoding======\n\n",db_name,loopnbits(ii));
-    eva_info_ = evaluate_PDZSH(XKTrain,LTrain,XKTest,LTest,XKRetr,LRetr,param);
+    eva_info_ = PDZSH(XKTrain,LTrain,XKTest,LTest,XKRetr,LRetr,param);
     MAP{ii} = eva_info_.MAP;
     trainT{ii} = eva_info_.trainT;
 end
